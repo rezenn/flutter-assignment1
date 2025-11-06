@@ -32,6 +32,10 @@ abstract class BankAccount {
     print("Account Holder: $_accHolderName.");
     print("Balance: $_balance.");
   }
+
+  @override
+  String toString() =>
+      'Account No: $_accountNumber | Holder: $_accHolderName | Balance: \$${_balance.toStringAsFixed(2)}';
 }
 
 abstract class InterestBearing {

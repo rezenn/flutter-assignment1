@@ -1,16 +1,16 @@
 import 'package:flutter_assignment_1/bank_account.dart';
 
 class CheckingAccount extends BankAccount {
-  final int _overdraft = 35;
+  final double _overdraft;
 
   CheckingAccount(
     super._accountNumber,
     super._accHolderName,
-    super._balance,
-    int overdraft,
-  );
+    super._balance, {
+    double overdraft = 35,
+  }) : _overdraft = overdraft;
 
-  int get overdraft => _overdraft;
+  double get overdraft => _overdraft;
 
   @override
   void deposit(double amount) {

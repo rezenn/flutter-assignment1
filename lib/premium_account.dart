@@ -1,20 +1,16 @@
 import 'package:flutter_assignment_1/bank_account.dart';
 
-class PremiumAccount extends BankAccount {
-  double _intrestRate = 5;
+class PremiumAccount extends BankAccount implements InterestBearing {
+  double _intrestRate;
 
   PremiumAccount(
     super._accountNumber,
     super._accHolderName,
-    super._balance,
-    this._intrestRate,
-  );
+    super._balance, {
+    double interestRate = 5,
+  }) : _intrestRate = interestRate;
 
-  set setIntrestRate(double intrestRate) {
-    _intrestRate = intrestRate;
-  }
-
-  double get intrestRate => _intrestRate;
+  double get interestRate => _intrestRate;
 
   @override
   void deposit(double amount) {
@@ -35,7 +31,8 @@ class PremiumAccount extends BankAccount {
     print("Withdrew $amount. The new balance is $balance.");
   }
 
-  void applyIntrest() {
+  @override
+  void applyInterest() {
     final intrestAmount = balance * (_intrestRate / 100);
     updateBalance(balance + intrestAmount);
     print("Intrest added: $intrestAmount. The new balance is $balance");

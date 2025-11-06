@@ -1,24 +1,20 @@
 import 'package:flutter_assignment_1/bank_account.dart';
 
 class SavingAccount extends BankAccount implements InterestBearing {
-  double _intrestRate = 2;
+  double _interestRate;
   final int _withdrawalLimit = 3;
-  int _withdrawalCount = 0;
+  int _withdrawalCount;
 
   SavingAccount(
     super._accountNumber,
     super._accHolderName,
-    super._balance,
-    this._intrestRate,
-    int withdrawalLimit,
-    this._withdrawalCount,
-  );
+    super._balance, {
+    double interestRate = 2,
+    int withdrawalCount = 0,
+  }) : _interestRate = interestRate,
+       _withdrawalCount = withdrawalCount;
 
-  set setIntrestRate(double intrestRate) {
-    _intrestRate = intrestRate;
-  }
-
-  double get intrestRate => _intrestRate;
+  double get intrestRate => _interestRate;
   int get withdrawalLimit => _withdrawalLimit;
   int get withdrawalCount => _withdrawalCount;
 
@@ -49,7 +45,7 @@ class SavingAccount extends BankAccount implements InterestBearing {
 
   @override
   void applyInterest() {
-    final intrestAmount = balance * (_intrestRate / 100);
+    final intrestAmount = balance * (_interestRate / 100);
     updateBalance(balance + intrestAmount);
     print("Intrest added: $intrestAmount. The new balance is $balance");
   }
