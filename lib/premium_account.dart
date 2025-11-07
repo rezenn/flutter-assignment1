@@ -18,6 +18,9 @@ class PremiumAccount extends BankAccount implements InterestBearing {
       print("The amount must be greater than 0.");
     }
     updateBalance(balance + amount);
+    addTransaction(
+      'Account: $accountNumber | Deposited: ${amount.toStringAsFixed(2)} | Balance: $balance',
+    );
     print("Deposited $amount. The new balance is $balance.");
   }
 
@@ -28,6 +31,7 @@ class PremiumAccount extends BankAccount implements InterestBearing {
       return;
     }
     updateBalance(balance - amount);
+    addTransaction('Account: $accountNumber | Withdrew: ${amount.toStringAsFixed(2)} | Balance: $balance');
     print("Withdrew $amount. The new balance is $balance.");
   }
 

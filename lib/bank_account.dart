@@ -30,14 +30,24 @@ abstract class BankAccount {
   void displayInfo() {
     print("Account Number: $_accountNumber.");
     print("Account Holder: $_accHolderName.");
+    print("Account type: $runtimeType");
     print("Balance: $_balance.");
   }
-
-  @override
-  String toString() =>
-      'Account No: $_accountNumber | Holder: $_accHolderName | Balance: \$${_balance.toStringAsFixed(2)}';
 }
 
 abstract class InterestBearing {
   void applyInterest();
+}
+
+List<String> _transactions = [];
+
+void addTransaction(String detail) {
+  _transactions.add(detail);
+}
+
+void showTransactions() {
+  print('--- Transaction History ---');
+  for (var t in _transactions) {
+    print(t);
+  }
 }

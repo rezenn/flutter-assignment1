@@ -18,7 +18,12 @@ class CheckingAccount extends BankAccount {
       print("The amount must be greater than 0.");
     }
     updateBalance(balance + amount);
-    print("Deposited $amount. The new balance is $balance.");
+    addTransaction(
+      'Deposited ${amount.toStringAsFixed(2)} | Balance: $balance',
+    );
+    print(
+      " Account: $accountNumber | Deposited: $amount. The new balance is $balance.",
+    );
   }
 
   @override
@@ -28,7 +33,10 @@ class CheckingAccount extends BankAccount {
       return;
     }
     updateBalance(balance - amount);
-    print("Withdrew $amount. The new balance is $balance.");
+    addTransaction('Withdrew ${amount.toStringAsFixed(2)} | Balance: $balance');
+    print(
+      "Account: $accountNumber | Withdrew: $amount. The new balance is $balance.",
+    );
 
     if (balance < 0) {
       updateBalance(balance - _overdraft);
