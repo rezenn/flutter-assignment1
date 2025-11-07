@@ -45,7 +45,6 @@ class Bank {
       'from $fromAccNum to $toAccNum.',
     );
 
-    // Perform withdrawal
     fromAcc.withdraw(amount);
 
     // If balance didn't decrease, withdrawal failed
@@ -54,7 +53,6 @@ class Bank {
       return false;
     }
 
-    // Deposit to destination account
     toAcc.deposit(amount);
     print('[Bank] Transfer completed.');
 
@@ -80,6 +78,6 @@ class Bank {
     _accounts.forEach((accNum, account) {
       print(account.toString());
     });
-    print('=== End Report ===');
+    print('End Report');
   }
 }
